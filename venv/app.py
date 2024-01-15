@@ -53,19 +53,14 @@ class Cart(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False, default=1)
 
-'''
+
 @app.route('/')
 def home():
     featured_products = Product.query.filter_by(category='light').all()
     special_offers = Product.query.filter_by(id = 10).all()
 
     return render_template('Home.html', featured_products=featured_products, special_offers=special_offers)
-'''
 
-@app.route('/')
-def home():
-
-    return render_template('index.html')
 
 
 @app.route('/Login', methods = ["GET","POST"])
