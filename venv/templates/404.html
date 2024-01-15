@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'CSS/404.css')}}">
+    <title>Сраница не найдена</title>
+</head>
+<body>
+<h1>Похоже, что страница не найдена.</h1>
+<a>Вы можете</a>
+<a href="{{url_for('home')}}"  target="_blank" > вернуться на главную</a>
+<img src="{{ url_for('static', filename='images/404.jpg') }}">
+</body>
+</html>

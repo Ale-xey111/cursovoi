@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Login.css') }}">
+
+
+    <title>Login</title>
+</head>
+<body>
+<h1><pre>
+    Welcome
+    Back  </pre></h1>
+
+
+
+    <div class="registration-form">
+        <!-- Форма регистрации... -->
+
+
+        <form action="/Login" method="post">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+
+                {% endif %}
+            {% endwith %}
+        <label for="login">Логин:</label>
+        <input type="text" id="login" name="login" placeholder="Enter your login:" required class="field_for_data">
+        <br>
+        <label for="password">Пароль:</label>
+
+        <input type="password" id="password" name="password" placeholder="Enter your password:" required class="field_for_data">
+        <br>
+        <input type="submit" value="Продолжить" class="kn">
+        <br>
+        <input type="reset" value="Сброс" class="kn">
+
+        <br>
+
+        </form>
+        <input type="checkbox" name="checkbox"><label>Запомнить меня</label>
+        <a href="{{ url_for('SignUP') }}" target="_blank">Have no account? Sign up</a>
+
+    </div>
+
+</body>
+</html>

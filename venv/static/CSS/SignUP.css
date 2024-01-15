@@ -1,0 +1,182 @@
+
+body {
+    background: linear-gradient(81deg, #ddb35f, #7409c7);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.h {
+    color: white;
+    font-family: sans-serif;
+    order: 2; /* Добавляем это свойство, чтобы изменить порядок отображения */
+    margin-right: 20px;
+    font-size: 6em;
+}
+
+.registration-form {
+    text-align: center;
+    background: linear-gradient(81deg, #ddb35f, #7409c7);
+    box-sizing: border-box;
+    border-radius: 40px;
+    width: 540px;
+    padding: 20px;
+    margin: auto;
+    order: 1; /* Добавляем это свойство, чтобы изменить порядок отображения */
+    margin-left: 30px;
+
+}
+
+label {
+    margin-bottom: 12px;
+    color: #800080;
+    display: block;
+    font-family: sans-serif;
+}
+
+.field_for_data {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    outline: none;
+}
+
+.kn {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    border-radius: 20px;
+
+    border: none;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.flash.success {
+    border: 1px;
+    border-radius: 20px;
+    background: green;
+}
+
+.flash.error {
+    border: 1px;
+    border-radius: 20px;
+    background: red;
+}
+
+
+/*
+
+body {
+    background: linear-gradient(81deg, #ddb35f, #7409c7);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+    h1 {
+        color: white;
+        font-size: 6em;
+        margin-left: 30px;
+        font-family: sans-serif;
+
+    }
+
+    .field_for_data {
+        border-radius: 40px;
+        color: #333;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        width: 100%;
+        border: none;
+    }
+
+    .kn {
+        width: 70%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 40px;
+        box-sizing: border-box;
+        background: linear-gradient(21deg, #dd03e4, #5611ec);
+        color: white;
+        cursor: pointer;
+        border: none;
+    }
+
+    .registration-form {
+        text-align: center;
+        background: linear-gradient(81deg, #ddb35f, #7409c7);
+        padding: 60px;
+        border: 2px solid #fff;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: 0 auto;
+        width: 40%
+    } А вот код для SignUp body {
+    background: linear-gradient(81deg, #ddb35f, #7409c7);
+    margin 10px;
+}
+
+.h{
+    color:white;
+    family-font: verdana
+}
+
+
+.registration-form{
+    text-align: center;
+    background: linear-gradient(81deg, #ddb35f, #7409c7);
+    box-sizing: border-box;
+    border-radius: 40px;
+    width: 540px;
+    padding: 20px;
+    margin: auto 0;
+}
+
+
+label {
+        margin-bottom: 12px;
+        color: #800080;
+        display: block;
+        font-family: sans-serif;
+    }
+
+.field_for_data {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.kn {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    border-radius: 20px;
+    background: linear-gradient(21deg, #dd03e4, #5611ec);
+    border: none;
+    color: white;
+    cursor: pointer;
+} */

@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/SignUP.css') }}">
+
+    <title>SignUp</title>
+</head>
+<body>
+<h1 class="h">Welcome</h1>
+
+
+    <div class="registration-form">
+        <!-- Форма регистрации... -->
+        <form action="/SignUp" method="post" class="kn">
+            {% with messages = get_flashed_messages(with_categories = true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name:" required class="field_for_data">
+        <br>
+        <label for="surname">Фамилия:</label>
+        <input type="text" id="surname" name="surname" placeholder="Enter your surname:" required class="field_for_data">
+        <br>
+        <label for="E-mail">Адрес электронной почты:</label>
+        <input type="text" id="E-mail" name="E-mail" placeholder="Enter your E-mail:" required class="field_for_data">
+        <br>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password:" required class="field_for_data">
+        <br>
+        <input type="submit" value="Продолжить" class="kn">
+        <br>
+        <input type="reset" value="Сброс" class="kn">
+
+        </form>
+    </div>
+
+</body>
+</html>

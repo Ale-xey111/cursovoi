@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Home.css') }}">
+    <title>Online Store</title>
+</head>
+<body>
+
+<header>
+    <div class="logo">Your Store</div>
+
+    <nav>
+        <ul>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Categories
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <div class="dropdown-content">
+                        <a href="#">Headlights</a>
+                        <a href="#">Wheels and rims</a>
+                        <a href="#">Engine Parts</a>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Home
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <div class="dropdown-content">
+                        <a href="{{url_for('home')}}">Главная</a>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Your Cart
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <div class="dropdown-content">
+                        <a href="{{url_for('Cart')}}">Go to Your Cart</a>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Your Profile
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <div class="dropdown-content">
+                        {% if not current_user.is_authenticated %}
+                            <a href="{{ url_for('Cart', login=current_user.email) }}">Go to Your Profile</a>
+                        {% else %}
+                            <a href="{{ url_for('profile', login=current_user.email) }}">Go to Your Profile</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div class="search-bar">
+
+        <input type="text" placeholder="Search..." name="search">
+            <button type="submit">Search</button> </form>
+    </div>
+</header>
+
+
+<section class="main-banner">
+    <img src="{{url_for('static', filename = 'images/img.png')}}" alt="Special Offers Banner">
+</section>
+
+
+<section class="featured-products">
+    <h2>Featured Products</h2>
+    {% for product in featured_products %}
+        <div class="product-card">
+            <a href="{{ url_for('product_detail', id = product.id)}}">
+                <img src="{{ url_for('static', filename='images/' + product.image) }}"></a>
+            <h3>{{ product.name }}</h3>
+            <p>{{ '$' ~ product.price }}</p>
+            <p>{{ 'Items left: ' ~ product.quantity }}</p>
+            {% if current_user.is_authenticated %}
+                <button onclick="addToCart({{ product.id }})">Add to Cart</button>
+                <button onclick = "addToFavorites( {{ product.id }} )">Add to Favorites</button>
+            {% else %}
+                <a href="{{ url_for('Cart') }}"><button>Add to Cart</button></a>
+                <a href="{{ url_for('Cart') }}"><button>Add to Favorites</button></a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</section>
+
+<section class="special-offers">
+    <h2>Special Offers</h2>
+    {% for product in special_offers %}
+        <div class="offer-card">
+            <a href="{{ url_for('product_detail', id = product.id)}}">
+                <img src="{{ url_for('static', filename='images/' + product.image) }}"></a>
+            <h3>{{ product.name }}</h3>
+            <p>{{ '$' ~ product.price }}</p>
+            <p>{{ 'Items left: ' ~ product.quantity }}</p>
+            {% if current_user.is_authenticated %}
+                <button onclick="addToCart({{ product.id }})">Add to Cart</button>
+            {% else %}
+                <a href="{{ url_for('Cart') }}"><button>Add to Cart</button></a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</section>
+
+<script>
+        function addToCart(productId) {
+
+            fetch(`/add_to_cart/${productId}`, { method: 'GET' })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Product added to cart!');
+                    } else {
+                        alert('Failed to add product to cart.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+</script>
+
+<script>
+    function addToFavorites(productId) {
+
+        fetch(`/add_to_favorites/${productId}`, { method: 'GET' })
+            .then(response => {
+                if(response.ok) {
+                    alert('Product added to favorites');
+                } else {
+                    alert('Failed to add product');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">Your Store</div>
+        <ul>
+            <li><a href="#" style="color: white">About Us</a></li>
+            <li><a href="#" style="color: white">Terms and Conditions</a></li>
+            <li><a href="#" style="color: white">Privacy Policy</a></li>
+            <li><a href="#" style="color: white">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="social-links">
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Twitter</a>
+        <a href="#" target="_blank">Instagram</a>
+    </div>
+</footer>
+
+</body>
+</html>
